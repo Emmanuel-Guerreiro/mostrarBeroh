@@ -4,7 +4,7 @@ import BotonBorrar from './botonBorrar';
 
 //TODO:Darle el formato correcto a las tarjetas
 
-const Tarjeta = ({tour, listaTour, setListaTour}) => {
+const Tarjeta = ({tour, listaTour, setListaTour, setReloadButton}) => {
     return(
         <div>
             <img src="tour.image" alt="tour.id"/>
@@ -15,7 +15,8 @@ const Tarjeta = ({tour, listaTour, setListaTour}) => {
                     {tour.info}
                 </p>
             </div> 
-            <BotonBorrar listaTour={listaTour} setListaTour={setListaTour} tour={tour}/>
+            <BotonBorrar listaTour={listaTour} setListaTour={setListaTour}
+             tour={tour} setReloadButton={setReloadButton}/>
         </div>
     );
 }

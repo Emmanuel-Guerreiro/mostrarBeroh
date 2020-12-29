@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-//Importo hojas de css para animar componentes
-import './componentes/estilosComponentes/estiloLoading.css';
-
 //importo componentes
 import ListaLugares from './componentes/listaLugares';
 import Loading from './componentes/loading';
+import ReloadButton from './componentes/reloadButton';
 
-/*TODO: definir el boton que vuelve a cargar los datos. Este solo se renderiza en el caso de que este vacia 
-la pagina y modifica el estado de loading de la applicacion*/
 
 function App() {
 
   const [listaTour, setListaTour] = useState([]);
   const [loading, setLoading] = useState(true);
+  //Este estado me permite trackear si tengo que renderizar el boton que va a volver a buscar la data de la API
+  const [reloadButton, setReloadButton] = useState(false);
 
   //Trae el array de datos desde el api para armar las tarjetas
   const fetchData = async () => {
@@ -23,7 +21,9 @@ function App() {
     const dataObject = await dataSource.json();
     setListaTour(dataObject);
     setLoading(false)
+    setReloadButton(false)
   }
+
   /*Solo voy a llamar a fetchData en el caso de que loading este puesto en true
   esto me permite vaciar la pagina de elementos y que solo se cargue en la primera entrada
   a la pagina o en el caso de que toque el boton que vuelve a cambiar el estado */
@@ -33,16 +33,24 @@ function App() {
     }
     })
 
-  if(loading){
+  if(loading && !reloadButton){
     return (
       <div className="App">
         <Loading /> 
       </div>
     );
-  }else if(!loading){
+  }else if(!loading && !reloadButton){
     return (
       <div className="App">
-        <ListaLugares listaTour={listaTour} setListaTour={setListaTour}/>
+        <ListaLugares listaTour={listaTour} setListaTour={setListaTour}
+        setReloadButton={setReloadButton}/>
+      </div>
+    );
+  }else if(reloadButton){
+    return(
+      <div className="App">
+        <ReloadButton setLoading={setLoading} 
+        setReloadButton={setReloadButton}/> 
       </div>
     );
   }

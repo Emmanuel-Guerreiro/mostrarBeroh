@@ -3,7 +3,7 @@ import React from 'react';
 //Importo componentes
 import Tarjeta from './tarjeta';
 
-const ListaLugares = ({listaTour, setListaTour}) => {
+const ListaLugares = ({listaTour, setListaTour, setReloadButton}) => {
 
     return(
         <div>
@@ -11,7 +11,8 @@ const ListaLugares = ({listaTour, setListaTour}) => {
                 tour => {
                     return(
                         <Tarjeta key={tour.id} tour={tour}
-                        listaTour={listaTour} setListaTour={setListaTour} />
+                        listaTour={listaTour} setListaTour={setListaTour}
+                        setReloadButton={setReloadButton} />
                     );
                 }
             )}
