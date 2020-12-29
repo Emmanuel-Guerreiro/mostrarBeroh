@@ -20,6 +20,7 @@ function App() {
       const dataSource = await fetch(url);
       const dataObject = await dataSource.json();
       setListaTour([dataObject]);
+      setLoading(false)
   }})
 
   if(loading){
