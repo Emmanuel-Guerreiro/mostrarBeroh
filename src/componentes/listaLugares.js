@@ -6,7 +6,7 @@ import Tarjeta from './tarjeta';
 const ListaLugares = ({listaTour, setListaTour, setReloadButton}) => {
 
     return(
-        <div>
+        <div className="d-flex justify-content-center">
             {listaTour.map( 
                 tour => {
                     return(

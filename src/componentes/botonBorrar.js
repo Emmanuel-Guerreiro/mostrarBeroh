@@ -11,7 +11,7 @@ const BotonBorrar = ({listaTour, setListaTour, tour, setReloadButton}) => {
 
     return(
         <div>
-            <button onClick={handleOnClick}>Not Interested</button>
+            <button className="btn btn-primary mb-3"onClick={handleOnClick}>Not Interested</button>
         </div>
     );  
 }
