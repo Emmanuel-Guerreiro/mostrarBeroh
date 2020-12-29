@@ -12,29 +12,28 @@ function App() {
   const [loading, setLoading] = useState(true);
 
 
-  
+  const fetchData = async () => {
+    const url = 'https://course-api.com/react-tours-project';
+    const dataSource = await fetch(url);
+    const dataObject = await dataSource.json();
+    setListaTour([dataObject]);
+    setLoading(false)
+}
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = 'https://course-api.com/react-tours-project';
-      const dataSource = await fetch(url);
-      const dataObject = await dataSource.json();
-      setListaTour([dataObject]);
-      setLoading(false)
-  }})
+    fetchData()
+    })
 
   if(loading){
     return (
       <div className="App">
         <Loading /> 
-        <p>loading</p>
       </div>
     );
   }else if(!loading){
     return (
       <div className="App">
-        <ListaLugares />
-        <p>lista</p>
+        <ListaLugares listaTour={listaTour}/>
       </div>
     );
   }
