@@ -28,32 +28,35 @@ function App() {
   esto me permite vaciar la pagina de elementos y que solo se cargue en la primera entrada
   a la pagina o en el caso de que toque el boton que vuelve a cambiar el estado */
   useEffect(() => {
-    if(loading === true){
+    if (loading === true) {
       fetchData();
     }
-    })
+  }, [loading])
 
-  if(loading && !reloadButton){
-    return (
-      <div className="App">
-        <Loading /> 
-      </div>
-    );
-  }else if(!loading && !reloadButton){
-    return (
-      <div className="App">
-        <ListaLugares listaTour={listaTour} setListaTour={setListaTour}
-        setReloadButton={setReloadButton}/>
-      </div>
-    );
-  }else if(reloadButton){
-    return(
-      <div className="App">
-        <ReloadButton setLoading={setLoading} 
-        setReloadButton={setReloadButton}/> 
-      </div>
-    );
+
+  let content;
+  if (loading) {
+    content = <Loading />
+  } else {
+    if (!reloadButton) {
+      content = <ListaLugares 
+                  listaTour={listaTour} 
+                  setListaTour={setListaTour}
+                  setReloadButton={setReloadButton}
+                />
+    } else {
+      content = <ReloadButton 
+                  setLoading={setLoading} 
+                  setReloadButton={setReloadButton}
+                />
+    }
   }
+
+  return (
+    <div className="App">
+      {content}
+    </div>
+  );
 }
 
 export default App;

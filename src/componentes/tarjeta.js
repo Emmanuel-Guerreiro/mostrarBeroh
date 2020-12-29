@@ -7,13 +7,11 @@ import BotonBorrar from './botonBorrar';
 const Tarjeta = ({tour, listaTour, setListaTour, setReloadButton}) => {
     return(
         <div>
-            <img src="tour.image" alt="tour.id"/>
+            <img src={tour.image} alt={tour.id}/>
             <div>
                 <h4>{tour.name}</h4>
-                <span>{tour.price}</span>
-                <p>
-                    {tour.info}
-                </p>
+                <span>${tour.price}</span>
+                <p>{tour.info}</p>
             </div> 
             <BotonBorrar listaTour={listaTour} setListaTour={setListaTour}
              tour={tour} setReloadButton={setReloadButton}/>
