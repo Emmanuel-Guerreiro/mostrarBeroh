@@ -1,9 +1,21 @@
 import React from 'react';
 
-const Tarjeta = () => {
+import BotonBorrar from './botonBorrar';
+
+//TODO:Darle el formato correcto a las tarjetas
+
+const Tarjeta = ({tour, listaTour, setListaTour}) => {
     return(
         <div>
-
+            <img src="tour.image" alt="tour.id"/>
+            <div>
+                <h4>{tour.name}</h4>
+                <span>{tour.price}</span>
+                <p>
+                    {tour.info}
+                </p>
+            </div> 
+            <BotonBorrar listaTour={listaTour} setListaTour={setListaTour} tour={tour}/>
         </div>
     );
 }
