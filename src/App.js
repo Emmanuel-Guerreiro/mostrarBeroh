@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
+//importo componentes
+import ListaLugares from './componentes/listaLugares';
+import Loading from './componentes/loading';
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [listaTour, setListaTour] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = 'https://course-api.com/react-tours-project';
+      const dataSource = await fetch(url);
+      const dataObject = await dataSource.json();
+      setListaTour([dataObject]);
+  }})
+
+  if(loading){
+    return (
+      <div className="App">
+        <Loading /> 
+        <p>loading</p>
+      </div>
+    );
+  }else if(!loading){
+    return (
+      <div className="App">
+        <ListaLugares />
+        <p>lista</p>
+      </div>
+    );
+  }
 }
 
 export default App;
