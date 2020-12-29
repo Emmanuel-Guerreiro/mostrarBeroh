@@ -9,7 +9,7 @@ const ReloadButton = ({setLoading, setReloadButton}) => {
     
     return(
         <div>
-            <button onClick={handleOnClick}>Soy el reloadButton</button>
+            <button onClick={handleOnClick}>Reload</button>
         </div>
     );
 }
