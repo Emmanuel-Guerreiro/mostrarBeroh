@@ -6,6 +6,7 @@ import BotonBorrar from './botonBorrar';
 
 const Tarjeta = ({tour, listaTour, setListaTour, setReloadButton}) => {
     return(
+<<<<<<< HEAD
         <div className="card" style={{width: "35rem"}}>
             <img className="card-img-top" src="tour.image" alt="tour.id"/>
             <div className="card-body">
@@ -18,6 +19,14 @@ const Tarjeta = ({tour, listaTour, setListaTour, setReloadButton}) => {
                 <p className="card-text text-justify m-4">
                     {tour.info}
                 </p>
+=======
+        <div>
+            <img src={tour.image} alt={tour.id}/>
+            <div>
+                <h4>{tour.name}</h4>
+                <span>${tour.price}</span>
+                <p>{tour.info}</p>
+>>>>>>> 561f8aba81681131192aff07d9360122442c8a51
             </div> 
             <BotonBorrar listaTour={listaTour} setListaTour={setListaTour}
              tour={tour} setReloadButton={setReloadButton}/>
